@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>just coin</title>
+  <link rel="icon" href="generated-image-1776165921833.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@900&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet" />
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: #ffffff;
+      color: #000;
+      overflow-x: hidden;
+    }
+
+    /* ── TICKER ── */
+    .ticker {
+      background: #f5c518;
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 9px 0;
+      border-bottom: 2px solid #000;
+    }
+    .ticker-inner {
+      display: inline-block;
+      animation: tick 20s linear infinite;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+    }
+    .ticker-inner span { margin: 0 30px; }
+    @keyframes tick { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 40px;
+      border-bottom: 2px solid #000;
+      background: #fff;
+    }
+    .nav-logo {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: -0.01em;
+    }
+    .nav-logo img { width: 26px; height: 26px; border-radius: 50%; }
+    .btn-buy {
+      background: #f5c518;
+      color: #000;
+      font-weight: 800;
+      font-size: 0.9rem;
+      padding: 10px 22px;
+      border-radius: 999px;
+      text-decoration: none;
+      border: 2px solid #000;
+      box-shadow: 3px 3px 0 #000;
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+    .btn-buy:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 #000; }
+
+    /* ── HERO ── */
+    .hero {
+      text-align: center;
+      padding: 70px 24px 30px;
+      background: #fff;
+    }
+    .hero-title {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: clamp(5rem, 14vw, 11rem);
+      line-height: 0.95;
+      letter-spacing: -0.025em;
+      color: #000;
+      display: block;
+    }
+    .hero-title .coin-o {
+      height: 0.82em;
+      width: 0.82em;
+      vertical-align: -0.08em;
+      display: inline-block;
+      border-radius: 50%;
+    }
+    .hero-sub {
+      font-size: clamp(0.95rem, 2.2vw, 1.25rem);
+      color: #444;
+      margin: 22px auto 0;
+      max-width: 500px;
+      line-height: 1.55;
+      font-weight: 600;
+    }
+    .hero-sub strong { color: #000; }
+    .featured-tweet {
+      margin: 36px auto 0;
+      max-width: 420px;
+      border: 3px solid #000;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 6px 6px 0 #000;
+      transform: rotate(-1.5deg);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .featured-tweet:hover {
+      transform: rotate(0deg) scale(1.02);
+      box-shadow: 8px 8px 0 #000;
+    }
+    .featured-tweet img { width: 100%; display: block; }
+
+    /* ── CA ── */
+    .ca-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      padding: 40px 24px 50px;
+    }
+    .ca-label {
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #999;
+    }
+    .ca-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #f5f5f5;
+      border: 2px solid #000;
+      border-radius: 12px;
+      padding: 12px 18px;
+      max-width: 680px;
+      width: 100%;
+    }
+    .ca-box code {
+      font-size: clamp(0.6rem, 1.6vw, 0.85rem);
+      font-family: monospace;
+      word-break: break-all;
+      flex: 1;
+      color: #000;
+    }
+    .copy-btn {
+      background: #000;
+      color: #f5c518;
+      border: none;
+      font-weight: 800;
+      font-size: 0.8rem;
+      padding: 7px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      white-space: nowrap;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .copy-btn:active { opacity: 0.7; }
+    .btn-big {
+      background: #f5c518;
+      color: #000;
+      font-weight: 800;
+      font-size: 1.1rem;
+      padding: 15px 48px;
+      border-radius: 999px;
+      text-decoration: none;
+      border: 3px solid #000;
+      box-shadow: 5px 5px 0 #000;
+      display: inline-block;
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+    .btn-big:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 #000; }
+
+    /* ── DIVIDER SCROLL ── */
+    .divider {
+      overflow: hidden;
+      border-top: 2px solid #000;
+      border-bottom: 2px solid #000;
+      padding: 14px 0;
+      background: #000;
+    }
+    .div-inner {
+      display: inline-block;
+      white-space: nowrap;
+      animation: scroll-l 26s linear infinite;
+    }
+    .div-inner span {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #f5c518;
+      margin: 0 20px;
+    }
+    @keyframes scroll-l { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ── TWEETS ── */
+    .tweets-section {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 70px 24px 60px;
+      text-align: center;
+    }
+    .tweets-section h2 {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      margin-bottom: 6px;
+    }
+    .tweets-section .sub {
+      color: #888;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 40px;
+    }
+    .tweets-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 18px;
+      align-items: start;
+    }
+    .tw-card {
+      background: #111;
+      border: 2px solid #000;
+      border-radius: 14px;
+      overflow: hidden;
+      text-align: left;
+    }
+    .tw-card img { width: 100%; display: block; }
+    .tw-embed { padding: 8px 8px 0; }
+
+    /* ── PROOF BLURB ── */
+    .proof {
+      background: #f5c518;
+      border-top: 2px solid #000;
+      border-bottom: 2px solid #000;
+      padding: 40px 24px;
+      text-align: center;
+    }
+    .proof p {
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      font-weight: 700;
+      max-width: 640px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    /* ── MARIO BLOCKS ── */
+    .q-block {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 54px;
+      height: 54px;
+      background: linear-gradient(to bottom, #f8c800 0%, #d08800 100%);
+      border: 3px solid #000;
+      border-radius: 4px;
+      box-shadow: 4px 4px 0 #000, inset 0 3px 0 rgba(255,255,255,0.45), inset -2px -2px 0 rgba(0,0,0,0.2);
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 2px 2px 0 #000;
+      cursor: pointer;
+      flex-shrink: 0;
+      user-select: none;
+      transition: transform 0.05s;
+    }
+    .q-block:hover { animation: block-hit 0.25s ease-out forwards; }
+    @keyframes block-hit {
+      0%   { transform: translateY(0); }
+      30%  { transform: translateY(-12px); }
+      70%  { transform: translateY(-6px); }
+      100% { transform: translateY(0); }
+    }
+    .brick-block {
+      display: inline-block;
+      width: 54px;
+      height: 54px;
+      background: #b84000;
+      border: 3px solid #000;
+      border-radius: 4px;
+      box-shadow: 4px 4px 0 #000;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .brick-block::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(transparent 46%, rgba(0,0,0,0.25) 46%, rgba(0,0,0,0.25) 54%, transparent 54%),
+        linear-gradient(90deg, transparent 46%, rgba(0,0,0,0.25) 46%, rgba(0,0,0,0.25) 54%, transparent 54%);
+      background-size: 27px 27px;
+      background-position: 0 0, 13px 0;
+    }
+    .m-coin {
+      width: 46px;
+      height: 46px;
+      background: url('generated-image-1776165921833.png') center/cover;
+      border-radius: 50%;
+      border: 3px solid #000;
+      box-shadow: 3px 3px 0 #000;
+      flex-shrink: 0;
+    }
+
+    /* floating animation variants */
+    .float-a { animation: fb 2.4s ease-in-out infinite; }
+    .float-b { animation: fb 2.4s ease-in-out infinite 0.4s; }
+    .float-c { animation: fb 2.4s ease-in-out infinite 0.8s; }
+    .float-d { animation: fb 2.4s ease-in-out infinite 1.2s; }
+    .float-e { animation: fb 2.4s ease-in-out infinite 1.6s; }
+    .float-f { animation: fb 2.4s ease-in-out infinite 2.0s; }
+    @keyframes fb {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-10px); }
+    }
+
+    /* ── BLOCK ROW ── */
+    .block-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 28px 24px;
+      background: #fff;
+      flex-wrap: wrap;
+    }
+
+    /* ── HERO FLOATING BLOCKS ── */
+    .hero {
+      position: relative;
+    }
+    .hero-block {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .hero-block.left  { left: 5%;  top: 50%; transform: translateY(-50%); }
+    .hero-block.right { right: 5%; top: 50%; transform: translateY(-50%); }
+    @media (max-width: 900px) { .hero-block { display: none; } }
+
+    /* ── MARIO SCENE ── */
+    .mario-scene {
+      width: 100%;
+      height: 240px;
+      background-image: url('photo_2026-04-14_14-50-00.jpg');
+      background-size: 100% auto;
+      background-repeat: no-repeat;
+      background-position: center bottom;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #000;
+      color: #333;
+      text-align: center;
+      padding: 18px 24px;
+      font-size: 0.72rem;
+      font-weight: 500;
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 12px 16px; }
+      .ca-box { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-inner">
+      <span>JUST A COIN</span><span>•</span>
+      <span>NIKITA SAID SO</span><span>•</span>
+      <span>$COIN OR ONLYFANS?</span><span>•</span>
+      <span>MAYBE WE SHOULD LAUNCH SOMETHING</span><span>•</span>
+      <span>IT'S JUST A COIN</span><span>•</span>
+      <span>JUST A COIN</span><span>•</span>
+      <span>NIKITA SAID SO</span><span>•</span>
+      <span>$COIN OR ONLYFANS?</span><span>•</span>
+      <span>MAYBE WE SHOULD LAUNCH SOMETHING</span><span>•</span>
+      <span>IT'S JUST A COIN</span><span>•</span>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">
+      <img src="generated-image-1776165921833.png" alt="" />
+      just coin
+    </div>
+    <a class="btn-buy" href="https://pump.fun/coin/DPhQyJCPPEt5dp9GQKBokH7khZM79zjjjWkh93Hjpump" target="_blank">Buy $COIN 🪙</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <!-- floating blocks left -->
+    <div class="hero-block left">
+      <div class="q-block float-a">?</div>
+      <div class="brick-block float-c"></div>
+      <div class="q-block float-e">?</div>
+    </div>
+    <!-- floating blocks right -->
+    <div class="hero-block right">
+      <div class="brick-block float-b"></div>
+      <div class="q-block float-d">?</div>
+      <div class="brick-block float-f"></div>
+    </div>
+
+    <h1 class="hero-title">just c<img class="coin-o" src="generated-image-1776165921833.png" alt="o" />in</h1>
+    <p class="hero-sub">
+      nikita bier said <strong>"crypto has had a rough year. maybe we should launch something to fix it."</strong>
+      <br/>so we did. it's just a coin.
+    </p>
+
+    <!-- FEATURED TWEET -->
+    <div class="featured-tweet">
+      <img src="photo_2026-04-14_11-56-45 (3).jpg" alt="Nikita Bier - $COIN tweet" />
+    </div>
+  </div>
+
+  <!-- CA + BUY -->
+  <div class="ca-section">
+    <div class="ca-label">Contract Address</div>
+    <div class="ca-box">
+      <code id="ca">DPhQyJCPPEt5dp9GQKBokH7khZM79zjjjWkh93Hjpump</code>
+      <button class="copy-btn" onclick="
+        navigator.clipboard.writeText(document.getElementById('ca').textContent);
+        this.textContent='✓ copied';
+        setTimeout(()=>this.textContent='copy',1500);
+      ">copy</button>
+    </div>
+    <a class="btn-big" href="https://pump.fun/coin/DPhQyJCPPEt5dp9GQKBokH7khZM79zjjjWkh93Hjpump" target="_blank">buy on pump.fun</a>
+  </div>
+
+  <!-- BLOCK ROW -->
+  <div class="block-row">
+    <div class="m-coin float-a"></div>
+    <div class="q-block float-b">?</div>
+    <div class="brick-block float-c"></div>
+    <div class="brick-block float-d"></div>
+    <div class="q-block float-e">?</div>
+    <div class="m-coin float-f"></div>
+    <div class="q-block float-a">?</div>
+    <div class="brick-block float-b"></div>
+    <div class="q-block float-c">?</div>
+    <div class="m-coin float-d"></div>
+    <div class="brick-block float-e"></div>
+    <div class="q-block float-f">?</div>
+    <div class="m-coin float-a"></div>
+  </div>
+
+  <!-- DIVIDER -->
+  <div class="divider">
+    <div class="div-inner">
+      <span>JUST A COIN ✦</span><span>NIKITA'S COIN ✦</span><span>$COIN OR ONLYFANS ✦</span>
+      <span>FIX CRYPTO ✦</span><span>1B SUPPLY ✦</span><span>ZERO TAX ✦</span>
+      <span>JUST A COIN ✦</span><span>NIKITA'S COIN ✦</span><span>$COIN OR ONLYFANS ✦</span>
+      <span>FIX CRYPTO ✦</span><span>1B SUPPLY ✦</span><span>ZERO TAX ✦</span>
+    </div>
+  </div>
+
+  <!-- TWEETS -->
+  <div class="tweets-section">
+    <h2>the man. the tweets. the coin.</h2>
+    <p class="sub">years of breadcrumbs. we finally listened.</p>
+    <div class="tweets-grid">
+
+      <div class="tw-card tw-embed">
+        <blockquote class="twitter-tweet" data-theme="dark" data-dnt="true">
+          <a href="https://x.com/nikitabier/status/2043893779552448735"></a>
+        </blockquote>
+      </div>
+
+      <div class="tw-card tw-embed">
+        <blockquote class="twitter-tweet" data-theme="dark" data-dnt="true">
+          <a href="https://x.com/nikitabier/status/1385711891935158275"></a>
+        </blockquote>
+      </div>
+
+      <div class="tw-card">
+        <img src="photo_2026-04-14_11-56-45 (3).jpg" alt="Nikita $COIN tweet" />
+      </div>
+
+      <div class="tw-card">
+        <img src="Screenshot 2026-04-14 at 16.59.44.png" alt="Nikita launch tweet" />
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PROOF BLURB -->
+  <div class="proof">
+    <p>
+      a bonk equivalent called <em>memecoin</em> ran to $50M on the same energy — just a coin, just a vibe, just the right moment.
+      nikita bier has 500k followers and years of $coin tweets.
+      <br/><strong>this is just a coin.</strong>
+    </p>
+  </div>
+
+  <!-- MARIO SCENE (bottom of banner image) -->
+  <div class="mario-scene"></div>
+
+  <!-- FOOTER -->
+  <footer>
+    $COIN is a meme coin with no intrinsic value or expectation of financial return. for entertainment only. not affiliated with nikita bier.
+  </footer>
+
+</body>
+</html>
