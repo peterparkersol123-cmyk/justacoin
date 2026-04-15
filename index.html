@@ -24,9 +24,25 @@
 
     body {
       font-family: 'Space Grotesk', sans-serif;
-      background: #ffffff;
-      color: #000;
+      background: #0a0800;
+      color: #f0f0f0;
       overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at 20% 50%, rgba(245,197,24,0.07) 0%, transparent 60%),
+                  radial-gradient(ellipse at 80% 20%, rgba(245,197,24,0.05) 0%, transparent 50%),
+                  radial-gradient(ellipse at 50% 80%, rgba(180,120,0,0.06) 0%, transparent 55%);
+      background-size: 200% 200%;
+      animation: bg-drift 12s ease infinite alternate;
+      pointer-events: none;
+      z-index: 0;
+    }
+    @keyframes bg-drift {
+      0%   { background-position: 0% 0%; }
+      100% { background-position: 100% 100%; }
     }
 
     /* ── TICKER ── */
@@ -53,8 +69,11 @@
       align-items: center;
       justify-content: space-between;
       padding: 16px 40px;
-      border-bottom: 2px solid #000;
-      background: #fff;
+      border-bottom: 1px solid #222;
+      background: rgba(10,8,0,0.85);
+      backdrop-filter: blur(12px);
+      position: relative;
+      z-index: 10;
     }
     .nav-logo {
       font-family: 'Nunito', sans-serif;
@@ -74,11 +93,11 @@
       padding: 10px 22px;
       border-radius: 999px;
       text-decoration: none;
-      border: 2px solid #000;
-      box-shadow: 3px 3px 0 #000;
+      border: 2px solid #f5c518;
+      box-shadow: 0 0 16px rgba(245,197,24,0.35);
       transition: transform 0.1s, box-shadow 0.1s;
     }
-    .btn-buy:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 #000; }
+    .btn-buy:hover { transform: scale(1.05); box-shadow: 0 0 28px rgba(245,197,24,0.55); }
     .btn-community {
       background: #000;
       color: #fff;
@@ -97,8 +116,9 @@
     .hero {
       text-align: center;
       padding: 70px 24px 30px;
-      background: #fff;
+      background: transparent;
       position: relative;
+      z-index: 1;
     }
     .hero-title {
       font-family: 'Nunito', sans-serif;
@@ -106,7 +126,7 @@
       font-size: clamp(5rem, 14vw, 11rem);
       line-height: 0.95;
       letter-spacing: -0.025em;
-      color: #000;
+      color: #fff;
       display: block;
     }
     .hero-title .coin-o {
@@ -125,29 +145,29 @@
     }
     .hero-sub {
       font-size: clamp(0.95rem, 2.2vw, 1.25rem);
-      color: #444;
+      color: #aaa;
       margin: 22px auto 0;
       max-width: 500px;
       line-height: 1.55;
       font-weight: 600;
       min-height: 80px;
     }
-    .hero-sub strong { color: #000; }
+    .hero-sub strong { color: #fff; }
 
     /* ── FEATURED TWEET ── */
     .featured-tweet {
       margin: 36px auto 0;
       max-width: 420px;
-      border: 3px solid #000;
+      border: 2px solid #333;
       border-radius: 16px;
       overflow: hidden;
-      box-shadow: 6px 6px 0 #000;
+      box-shadow: 0 0 40px rgba(245,197,24,0.15);
       transform: rotate(-1.5deg);
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .featured-tweet:hover {
       transform: rotate(0deg) scale(1.02);
-      box-shadow: 8px 8px 0 #000;
+      box-shadow: 0 0 60px rgba(245,197,24,0.3);
     }
     .featured-tweet img { width: 100%; display: block; }
 
@@ -158,20 +178,22 @@
       align-items: center;
       gap: 14px;
       padding: 40px 24px 50px;
+      position: relative;
+      z-index: 1;
     }
     .ca-label {
       font-size: 0.7rem;
       font-weight: 800;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #999;
+      color: #555;
     }
     .ca-box {
       display: flex;
       align-items: center;
       gap: 12px;
-      background: #f5f5f5;
-      border: 2px solid #000;
+      background: #111;
+      border: 1px solid #333;
       border-radius: 12px;
       padding: 12px 18px;
       max-width: 680px;
@@ -182,7 +204,7 @@
       font-family: monospace;
       word-break: break-all;
       flex: 1;
-      color: #000;
+      color: #f5c518;
     }
     .copy-btn {
       background: #000;
@@ -205,12 +227,12 @@
       padding: 15px 48px;
       border-radius: 999px;
       text-decoration: none;
-      border: 3px solid #000;
-      box-shadow: 5px 5px 0 #000;
+      border: none;
+      box-shadow: 0 0 30px rgba(245,197,24,0.4);
       display: inline-block;
       transition: transform 0.1s, box-shadow 0.1s;
     }
-    .btn-big:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 #000; }
+    .btn-big:hover { transform: scale(1.05); box-shadow: 0 0 50px rgba(245,197,24,0.6); }
 
     /* ── MARIO BLOCKS ── */
     .q-block {
@@ -290,8 +312,10 @@
       justify-content: center;
       gap: 8px;
       padding: 28px 24px;
-      background: #fff;
+      background: transparent;
       flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
     }
 
     /* ── HERO FLOATING BLOCKS ── */
