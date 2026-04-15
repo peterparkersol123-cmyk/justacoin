@@ -495,8 +495,45 @@
       image-rendering: pixelated;
     }
 
+    /* ── COMMUNITY SECTION ── */
+    .community-bar {
+      background: #000;
+      border-top: 2px solid #000;
+      border-bottom: 2px solid #000;
+      padding: 36px 24px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .community-bar p {
+      color: #888;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .btn-community-big {
+      background: #fff;
+      color: #000;
+      font-weight: 800;
+      font-size: 1.1rem;
+      padding: 14px 36px;
+      border-radius: 999px;
+      text-decoration: none;
+      border: 3px solid #fff;
+      box-shadow: 5px 5px 0 #f5c518;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+    .btn-community-big:hover { transform: translate(-2px,-2px); box-shadow: 7px 7px 0 #f5c518; }
+
     @media (max-width: 600px) {
       nav { padding: 12px 16px; }
+      nav .btn-community { display: none; } /* hide from nav on mobile, show in section */
       .ca-box { flex-direction: column; text-align: center; }
     }
   </style>
@@ -595,6 +632,15 @@
       <span>JUST A COIN ✦</span><span>NIKITA'S COIN ✦</span><span>$COIN OR ONLYFANS ✦</span>
       <span>FIX CRYPTO ✦</span><span>1B SUPPLY ✦</span><span>ZERO TAX ✦</span>
     </div>
+  </div>
+
+  <!-- COMMUNITY -->
+  <div class="community-bar">
+    <p>join the community</p>
+    <a class="btn-community-big" href="https://x.com/i/communities/2020164410430394521" target="_blank">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.738l7.73-8.835L1.254 2.25H8.08l4.259 5.63L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      Join the $COIN Community
+    </a>
   </div>
 
   <!-- TWEETS -->
