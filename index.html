@@ -85,6 +85,7 @@
       text-align: center;
       padding: 70px 24px 30px;
       background: #fff;
+      position: relative;
     }
     .hero-title {
       font-family: 'Nunito', sans-serif;
@@ -109,8 +110,11 @@
       max-width: 500px;
       line-height: 1.55;
       font-weight: 600;
+      min-height: 80px;
     }
     .hero-sub strong { color: #000; }
+
+    /* ── FEATURED TWEET ── */
     .featured-tweet {
       margin: 36px auto 0;
       max-width: 420px;
@@ -188,6 +192,99 @@
     }
     .btn-big:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 #000; }
 
+    /* ── MARIO BLOCKS ── */
+    .q-block {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 54px;
+      height: 54px;
+      background: linear-gradient(to bottom, #f8c800 0%, #d08800 100%);
+      border: 3px solid #000;
+      border-radius: 4px;
+      box-shadow: 4px 4px 0 #000, inset 0 3px 0 rgba(255,255,255,0.45), inset -2px -2px 0 rgba(0,0,0,0.2);
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 2px 2px 0 #000;
+      cursor: pointer;
+      flex-shrink: 0;
+      user-select: none;
+      transition: transform 0.05s;
+    }
+    .q-block:hover:not(.used) { filter: brightness(1.1); }
+    .q-block.used {
+      background: linear-gradient(to bottom, #907020 0%, #604800 100%);
+      color: transparent;
+      cursor: default;
+      box-shadow: 4px 4px 0 #000;
+    }
+    .brick-block {
+      display: inline-block;
+      width: 54px;
+      height: 54px;
+      background: #b84000;
+      border: 3px solid #000;
+      border-radius: 4px;
+      box-shadow: 4px 4px 0 #000;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .brick-block::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(transparent 46%, rgba(0,0,0,0.25) 46%, rgba(0,0,0,0.25) 54%, transparent 54%),
+        linear-gradient(90deg, transparent 46%, rgba(0,0,0,0.25) 46%, rgba(0,0,0,0.25) 54%, transparent 54%);
+      background-size: 27px 27px;
+      background-position: 0 0, 13px 0;
+    }
+    .m-coin {
+      width: 46px;
+      height: 46px;
+      background: url('generated-image-1776165921833.png') center/cover;
+      border-radius: 50%;
+      border: 3px solid #000;
+      box-shadow: 3px 3px 0 #000;
+      flex-shrink: 0;
+    }
+
+    /* floating animation variants */
+    .float-a { animation: fb 2.4s ease-in-out infinite; }
+    .float-b { animation: fb 2.4s ease-in-out infinite 0.4s; }
+    .float-c { animation: fb 2.4s ease-in-out infinite 0.8s; }
+    .float-d { animation: fb 2.4s ease-in-out infinite 1.2s; }
+    .float-e { animation: fb 2.4s ease-in-out infinite 1.6s; }
+    .float-f { animation: fb 2.4s ease-in-out infinite 2.0s; }
+    @keyframes fb {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-10px); }
+    }
+
+    /* ── BLOCK ROW ── */
+    .block-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 28px 24px;
+      background: #fff;
+      flex-wrap: wrap;
+    }
+
+    /* ── HERO FLOATING BLOCKS ── */
+    .hero-block {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .hero-block.left  { left: 5%;  top: 50%; transform: translateY(-50%); }
+    .hero-block.right { right: 5%; top: 50%; transform: translateY(-50%); }
+    @media (max-width: 900px) { .hero-block { display: none; } }
+
     /* ── DIVIDER SCROLL ── */
     .divider {
       overflow: hidden;
@@ -260,102 +357,6 @@
       line-height: 1.5;
     }
 
-    /* ── MARIO BLOCKS ── */
-    .q-block {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 54px;
-      height: 54px;
-      background: linear-gradient(to bottom, #f8c800 0%, #d08800 100%);
-      border: 3px solid #000;
-      border-radius: 4px;
-      box-shadow: 4px 4px 0 #000, inset 0 3px 0 rgba(255,255,255,0.45), inset -2px -2px 0 rgba(0,0,0,0.2);
-      font-size: 1.6rem;
-      font-weight: 900;
-      color: #fff;
-      text-shadow: 2px 2px 0 #000;
-      cursor: pointer;
-      flex-shrink: 0;
-      user-select: none;
-      transition: transform 0.05s;
-    }
-    .q-block:hover { animation: block-hit 0.25s ease-out forwards; }
-    @keyframes block-hit {
-      0%   { transform: translateY(0); }
-      30%  { transform: translateY(-12px); }
-      70%  { transform: translateY(-6px); }
-      100% { transform: translateY(0); }
-    }
-    .brick-block {
-      display: inline-block;
-      width: 54px;
-      height: 54px;
-      background: #b84000;
-      border: 3px solid #000;
-      border-radius: 4px;
-      box-shadow: 4px 4px 0 #000;
-      flex-shrink: 0;
-      position: relative;
-      overflow: hidden;
-    }
-    .brick-block::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(transparent 46%, rgba(0,0,0,0.25) 46%, rgba(0,0,0,0.25) 54%, transparent 54%),
-        linear-gradient(90deg, transparent 46%, rgba(0,0,0,0.25) 46%, rgba(0,0,0,0.25) 54%, transparent 54%);
-      background-size: 27px 27px;
-      background-position: 0 0, 13px 0;
-    }
-    .m-coin {
-      width: 46px;
-      height: 46px;
-      background: url('generated-image-1776165921833.png') center/cover;
-      border-radius: 50%;
-      border: 3px solid #000;
-      box-shadow: 3px 3px 0 #000;
-      flex-shrink: 0;
-    }
-
-    /* floating animation variants */
-    .float-a { animation: fb 2.4s ease-in-out infinite; }
-    .float-b { animation: fb 2.4s ease-in-out infinite 0.4s; }
-    .float-c { animation: fb 2.4s ease-in-out infinite 0.8s; }
-    .float-d { animation: fb 2.4s ease-in-out infinite 1.2s; }
-    .float-e { animation: fb 2.4s ease-in-out infinite 1.6s; }
-    .float-f { animation: fb 2.4s ease-in-out infinite 2.0s; }
-    @keyframes fb {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(-10px); }
-    }
-
-    /* ── BLOCK ROW ── */
-    .block-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 28px 24px;
-      background: #fff;
-      flex-wrap: wrap;
-    }
-
-    /* ── HERO FLOATING BLOCKS ── */
-    .hero {
-      position: relative;
-    }
-    .hero-block {
-      position: absolute;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .hero-block.left  { left: 5%;  top: 50%; transform: translateY(-50%); }
-    .hero-block.right { right: 5%; top: 50%; transform: translateY(-50%); }
-    @media (max-width: 900px) { .hero-block { display: none; } }
-
     /* ── MARIO SCENE ── */
     .mario-scene {
       width: 100%;
@@ -374,6 +375,111 @@
       padding: 18px 24px;
       font-size: 0.72rem;
       font-weight: 500;
+    }
+
+    /* ══════════════════════════════════
+       INTERACTIVE FEATURES
+    ══════════════════════════════════ */
+
+    /* Falling coins */
+    .falling-coin {
+      position: fixed;
+      top: -40px;
+      border-radius: 50%;
+      background: url('generated-image-1776165921833.png') center/cover;
+      border: 2px solid rgba(0,0,0,0.4);
+      pointer-events: none;
+      z-index: 999;
+      animation: coin-fall linear forwards;
+    }
+    @keyframes coin-fall {
+      0%   { transform: translateY(0) rotate(0deg) scale(1);   opacity: 1; }
+      70%  { opacity: 1; }
+      100% { transform: translateY(105vh) rotate(540deg) scale(0.8); opacity: 0; }
+    }
+
+    /* Cursor trail */
+    .cursor-coin {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: url('generated-image-1776165921833.png') center/cover;
+      border: 1.5px solid rgba(0,0,0,0.3);
+      pointer-events: none;
+      z-index: 998;
+      animation: cursor-fade 0.65s ease-out forwards;
+    }
+    @keyframes cursor-fade {
+      0%   { transform: translateY(0) scale(1);    opacity: 0.85; }
+      100% { transform: translateY(-28px) scale(0.2); opacity: 0; }
+    }
+
+    /* Coin pop from ? block */
+    .coin-pop {
+      position: fixed;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: url('generated-image-1776165921833.png') center/cover;
+      border: 2px solid #000;
+      box-shadow: 2px 2px 0 #000;
+      pointer-events: none;
+      z-index: 1001;
+      animation: coin-pop-anim 0.65s cubic-bezier(0.15, 0.85, 0.35, 1) forwards;
+    }
+    @keyframes coin-pop-anim {
+      0%   { transform: translateY(0)    scale(0.4); opacity: 1; }
+      55%  { transform: translateY(-65px) scale(1.3); opacity: 1; }
+      100% { transform: translateY(-90px) scale(0.7); opacity: 0; }
+    }
+
+    /* Pixel score popup */
+    .score-pop {
+      position: fixed;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      color: #f5c518;
+      text-shadow: 1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+      pointer-events: none;
+      z-index: 1002;
+      animation: score-float 0.8s ease-out forwards;
+    }
+    @keyframes score-float {
+      0%   { transform: translateY(0);     opacity: 1; }
+      100% { transform: translateY(-50px); opacity: 0; }
+    }
+
+    /* Music button */
+    .music-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 1000;
+      width: 52px;
+      height: 52px;
+      background: #f5c518;
+      border: 3px solid #000;
+      border-radius: 50%;
+      font-size: 1.4rem;
+      cursor: pointer;
+      box-shadow: 3px 3px 0 #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+    .music-btn:hover { transform: translate(-1px,-1px); box-shadow: 5px 5px 0 #000; }
+    .music-btn.playing { background: #000; color: #f5c518; }
+
+    /* Pixel runner */
+    #nikita-runner {
+      position: fixed;
+      bottom: 12px;
+      z-index: 500;
+      pointer-events: none;
+      image-rendering: pixelated;
     }
 
     @media (max-width: 600px) {
@@ -411,13 +517,11 @@
 
   <!-- HERO -->
   <div class="hero">
-    <!-- floating blocks left -->
     <div class="hero-block left">
       <div class="q-block float-a">?</div>
       <div class="brick-block float-c"></div>
       <div class="q-block float-e">?</div>
     </div>
-    <!-- floating blocks right -->
     <div class="hero-block right">
       <div class="brick-block float-b"></div>
       <div class="q-block float-d">?</div>
@@ -430,7 +534,6 @@
       <br/>so we did. it's just a coin.
     </p>
 
-    <!-- FEATURED TWEET -->
     <div class="featured-tweet">
       <img src="photo_2026-04-14_11-56-45 (3).jpg" alt="Nikita Bier - $COIN tweet" />
     </div>
@@ -441,10 +544,11 @@
     <div class="ca-label">Contract Address</div>
     <div class="ca-box">
       <code id="ca">DPhQyJCPPEt5dp9GQKBokH7khZM79zjjjWkh93Hjpump</code>
-      <button class="copy-btn" onclick="
+      <button class="copy-btn" id="copy-ca-btn" onclick="
         navigator.clipboard.writeText(document.getElementById('ca').textContent);
         this.textContent='✓ copied';
         setTimeout(()=>this.textContent='copy',1500);
+        spawnConfetti(this);
       ">copy</button>
     </div>
     <a class="btn-big" href="https://pump.fun/coin/DPhQyJCPPEt5dp9GQKBokH7khZM79zjjjWkh93Hjpump" target="_blank">buy on pump.fun</a>
@@ -482,27 +586,22 @@
     <h2>the man. the tweets. the coin.</h2>
     <p class="sub">years of breadcrumbs. we finally listened.</p>
     <div class="tweets-grid">
-
       <div class="tw-card tw-embed">
         <blockquote class="twitter-tweet" data-theme="dark" data-dnt="true">
           <a href="https://x.com/nikitabier/status/2043893779552448735"></a>
         </blockquote>
       </div>
-
       <div class="tw-card tw-embed">
         <blockquote class="twitter-tweet" data-theme="dark" data-dnt="true">
           <a href="https://x.com/nikitabier/status/1385711891935158275"></a>
         </blockquote>
       </div>
-
       <div class="tw-card">
         <img src="photo_2026-04-14_11-56-45 (3).jpg" alt="Nikita $COIN tweet" />
       </div>
-
       <div class="tw-card">
         <img src="Screenshot 2026-04-14 at 16.59.44.png" alt="Nikita launch tweet" />
       </div>
-
     </div>
   </div>
 
@@ -515,13 +614,378 @@
     </p>
   </div>
 
-  <!-- MARIO SCENE (bottom of banner image) -->
+  <!-- MARIO SCENE -->
   <div class="mario-scene"></div>
 
   <!-- FOOTER -->
   <footer>
     $COIN is a meme coin with no intrinsic value or expectation of financial return. for entertainment only. not affiliated with nikita bier.
   </footer>
+
+  <!-- MUSIC BUTTON -->
+  <button class="music-btn" id="music-btn" title="Play chiptune">🎵</button>
+
+  <!-- ═══════════ INTERACTIVE JS ═══════════ -->
+  <script>
+  (function () {
+
+    // ─────────────────────────────────────
+    // SHARED AUDIO CONTEXT
+    // ─────────────────────────────────────
+    let sfxCtx = null;
+    function getSfx() {
+      if (!sfxCtx) sfxCtx = new (window.AudioContext || window.webkitAudioContext)();
+      return sfxCtx;
+    }
+    function playCoinSound() {
+      try {
+        const ctx = getSfx();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain); gain.connect(ctx.destination);
+        osc.type = 'square';
+        osc.frequency.setValueAtTime(988,  ctx.currentTime);
+        osc.frequency.setValueAtTime(1319, ctx.currentTime + 0.08);
+        gain.gain.setValueAtTime(0.28, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.3);
+        osc.start(ctx.currentTime);
+        osc.stop(ctx.currentTime + 0.3);
+      } catch(e) {}
+    }
+
+    // ─────────────────────────────────────
+    // 1. TYPEWRITER
+    // ─────────────────────────────────────
+    function initTypewriter() {
+      const el = document.querySelector('.hero-sub');
+      if (!el) return;
+
+      // Parse child nodes into typed segments
+      const segments = [];
+      el.childNodes.forEach(node => {
+        if (node.nodeType === 3) {
+          segments.push({ type: 'text', content: node.textContent });
+        } else if (node.tagName === 'STRONG') {
+          segments.push({ type: 'strong', content: node.textContent });
+        } else if (node.tagName === 'BR') {
+          segments.push({ type: 'br' });
+        }
+      });
+
+      // Flatten to char list
+      const chars = [];
+      segments.forEach(seg => {
+        if (seg.type === 'br') {
+          chars.push({ char: null, tag: 'br' });
+        } else {
+          for (const c of seg.content) chars.push({ char: c, tag: seg.type });
+        }
+      });
+
+      el.innerHTML = '';
+      let i = 0;
+      let currentStrong = null;
+
+      function type() {
+        if (i >= chars.length) return;
+        const { char, tag } = chars[i];
+        if (tag === 'br') {
+          el.appendChild(document.createElement('br'));
+          currentStrong = null;
+        } else if (tag === 'strong') {
+          if (!currentStrong || currentStrong.tagName !== 'STRONG') {
+            currentStrong = document.createElement('strong');
+            el.appendChild(currentStrong);
+          }
+          currentStrong.textContent += char;
+        } else {
+          currentStrong = null;
+          if (el.lastChild && el.lastChild.nodeType === 3) {
+            el.lastChild.textContent += char;
+          } else {
+            el.appendChild(document.createTextNode(char));
+          }
+        }
+        i++;
+        setTimeout(type, 22);
+      }
+      setTimeout(type, 700);
+    }
+
+    // ─────────────────────────────────────
+    // 2. COIN RAIN ON LOAD
+    // ─────────────────────────────────────
+    function initCoinRain() {
+      const COUNT = 28;
+      for (let i = 0; i < COUNT; i++) {
+        setTimeout(() => {
+          const coin = document.createElement('div');
+          coin.className = 'falling-coin';
+          const size = 14 + Math.random() * 18;
+          coin.style.width  = size + 'px';
+          coin.style.height = size + 'px';
+          coin.style.left   = (Math.random() * 98) + 'vw';
+          const dur = 1.4 + Math.random() * 2.2;
+          coin.style.animationDuration = dur + 's';
+          document.body.appendChild(coin);
+          setTimeout(() => coin.remove(), (dur + 0.2) * 1000);
+        }, i * 100 + Math.random() * 80);
+      }
+    }
+
+    // ─────────────────────────────────────
+    // 3. ? BLOCK HIT
+    // ─────────────────────────────────────
+    let coinScore = 0;
+
+    function initBlockHits() {
+      document.querySelectorAll('.q-block').forEach(block => {
+        block.addEventListener('click', function () {
+          if (this.classList.contains('used')) return;
+          this.classList.add('used');
+
+          // Coin pop
+          const rect = this.getBoundingClientRect();
+          const cx = rect.left + rect.width / 2 - 15;
+          const cy = rect.top - 10 + window.scrollY;
+
+          const coin = document.createElement('div');
+          coin.className = 'coin-pop';
+          coin.style.left = cx + 'px';
+          coin.style.top  = (rect.top - 10) + 'px';
+          document.body.appendChild(coin);
+          setTimeout(() => coin.remove(), 700);
+
+          // Score popup
+          coinScore += 200;
+          const score = document.createElement('div');
+          score.className = 'score-pop';
+          score.textContent = '+200';
+          score.style.left = (cx + 5) + 'px';
+          score.style.top  = (rect.top - 30) + 'px';
+          document.body.appendChild(score);
+          setTimeout(() => score.remove(), 900);
+
+          playCoinSound();
+        });
+      });
+    }
+
+    // ─────────────────────────────────────
+    // 4. CURSOR TRAIL
+    // ─────────────────────────────────────
+    function initCursorTrail() {
+      let last = 0;
+      document.addEventListener('mousemove', e => {
+        const now = Date.now();
+        if (now - last < 55) return;
+        last = now;
+
+        const coin = document.createElement('div');
+        coin.className = 'cursor-coin';
+        coin.style.left = (e.clientX - 10) + 'px';
+        coin.style.top  = (e.clientY - 10) + 'px';
+        document.body.appendChild(coin);
+        setTimeout(() => coin.remove(), 700);
+      });
+    }
+
+    // ─────────────────────────────────────
+    // 5. COPY CONFETTI
+    // ─────────────────────────────────────
+    window.spawnConfetti = function (btn) {
+      const rect = btn.getBoundingClientRect();
+      for (let i = 0; i < 18; i++) {
+        const coin = document.createElement('div');
+        coin.className = 'cursor-coin';
+        const angle = (Math.PI * 2 / 18) * i;
+        const dist  = 40 + Math.random() * 40;
+        const startX = rect.left + rect.width / 2 - 10;
+        const startY = rect.top  + rect.height / 2 - 10;
+        coin.style.left = startX + 'px';
+        coin.style.top  = startY + 'px';
+        coin.style.animation = 'none';
+        coin.style.transition = 'transform 0.5s ease-out, opacity 0.5s ease-out';
+        document.body.appendChild(coin);
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            coin.style.transform = `translate(${Math.cos(angle)*dist}px, ${Math.sin(angle)*dist}px) scale(0.1)`;
+            coin.style.opacity = '0';
+          });
+        });
+        setTimeout(() => coin.remove(), 600);
+      }
+      playCoinSound();
+    };
+
+    // ─────────────────────────────────────
+    // 6. PIXEL NIKITA RUNNER
+    // ─────────────────────────────────────
+    function createNikitaRunner() {
+      const SCALE = 4;
+      const W = 8, H = 12;
+
+      // Color palette
+      const SK = '#f5c094'; // skin
+      const HR = '#2a1500'; // hair
+      const EY = '#3a2200'; // eyes
+      const SH = '#3366ee'; // shirt
+      const PT = '#0000aa'; // pants
+      const BT = '#111111'; // boots
+      const __ = null;       // transparent
+
+      // 2-frame run cycle
+      const frames = [
+        // Frame 1 — right leg fwd
+        [
+          [__,__,HR,HR,HR,HR,__,__],
+          [__,HR,SK,SK,SK,SK,HR,__],
+          [__,SK,SK,EY,EY,SK,SK,__],
+          [__,SK,SK,SK,SK,SK,SK,__],
+          [SH,SH,SH,SH,SH,SH,SH,SH],
+          [SH,SH,SH,SH,SH,SH,SH,SH],
+          [__,PT,PT,PT,PT,PT,PT,__],
+          [__,PT,PT,__,__,PT,PT,__],
+          [PT,PT,__,__,__,__,PT,PT],
+          [PT,PT,__,__,__,__,PT,PT],
+          [BT,BT,BT,__,__,__,__,__],
+          [__,__,__,__,__,BT,BT,BT],
+        ],
+        // Frame 2 — left leg fwd
+        [
+          [__,__,HR,HR,HR,HR,__,__],
+          [__,HR,SK,SK,SK,SK,HR,__],
+          [__,SK,SK,EY,EY,SK,SK,__],
+          [__,SK,SK,SK,SK,SK,SK,__],
+          [SH,SH,SH,SH,SH,SH,SH,SH],
+          [SH,SH,SH,SH,SH,SH,SH,SH],
+          [__,PT,PT,PT,PT,PT,PT,__],
+          [__,PT,PT,__,__,PT,PT,__],
+          [PT,PT,__,__,__,__,PT,PT],
+          [PT,PT,__,__,__,__,PT,PT],
+          [__,__,__,__,__,BT,BT,BT],
+          [BT,BT,BT,__,__,__,__,__],
+        ],
+      ];
+
+      const canvas = document.createElement('canvas');
+      canvas.id = 'nikita-runner';
+      canvas.width  = W * SCALE;
+      canvas.height = H * SCALE;
+      canvas.style.width  = (W * SCALE) + 'px';
+      canvas.style.height = (H * SCALE) + 'px';
+      document.body.appendChild(canvas);
+
+      const ctx = canvas.getContext('2d');
+
+      function drawFrame(f) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        frames[f].forEach((row, ry) => {
+          row.forEach((col, rx) => {
+            if (col) {
+              ctx.fillStyle = col;
+              ctx.fillRect(rx * SCALE, ry * SCALE, SCALE, SCALE);
+            }
+          });
+        });
+      }
+
+      let x = -W * SCALE;
+      let frame = 0;
+      let tick  = 0;
+      const SPEED = 1.8;
+      const FPS   = 8; // animation frames per walk cycle flip
+
+      drawFrame(0);
+
+      function loop() {
+        x += SPEED;
+        if (x > window.innerWidth + W * SCALE) x = -W * SCALE;
+        canvas.style.left = x + 'px';
+        tick++;
+        if (tick % FPS === 0) { frame = (frame + 1) % 2; drawFrame(frame); }
+        requestAnimationFrame(loop);
+      }
+      loop();
+    }
+
+    // ─────────────────────────────────────
+    // 7. CHIPTUNE MUSIC (Mario overworld)
+    // ─────────────────────────────────────
+    function initMusicButton() {
+      const btn = document.getElementById('music-btn');
+      if (!btn) return;
+
+      let playing = false;
+      let mCtx    = null;
+      let loopTO  = null;
+
+      const BPM = 188;
+      const b   = 60 / BPM; // seconds per beat
+
+      // Rough Mario overworld melody [Hz, beats]
+      const M = [
+        [659,.5],[659,.5],[0,.5],[659,.5],[0,.5],[523,.5],[659,.5],[0,.5],
+        [784, 1],[0, 1],[392, 1],[0, 1],
+        [523,.75],[0,.25],[392,.75],[0,.25],[330,1],[0,.5],
+        [440,.75],[0,.25],[494,.75],[0,.25],[466,.5],[440,.75],[0,.25],
+        [392,.67],[659,.67],[784,.67],[880,.75],[0,.25],[698,.5],[784,.75],[0,.25],
+        [659,.75],[0,.25],[523,.5],[587,.5],[494,.75],[0,.75],
+      ];
+
+      function schedule() {
+        if (!playing) return;
+        let t = mCtx.currentTime + 0.05;
+        let total = 0;
+        M.forEach(([hz, dur]) => {
+          const d = dur * b;
+          if (hz > 0) {
+            const osc  = mCtx.createOscillator();
+            const gain = mCtx.createGain();
+            osc.connect(gain); gain.connect(mCtx.destination);
+            osc.type = 'square';
+            osc.frequency.value = hz;
+            gain.gain.setValueAtTime(0.1, t);
+            gain.gain.exponentialRampToValueAtTime(0.001, t + d * 0.88);
+            osc.start(t); osc.stop(t + d);
+          }
+          t += d; total += d;
+        });
+        loopTO = setTimeout(schedule, (total - 0.1) * 1000);
+      }
+
+      btn.addEventListener('click', () => {
+        playing = !playing;
+        if (playing) {
+          mCtx = new (window.AudioContext || window.webkitAudioContext)();
+          schedule();
+          btn.textContent = '🔊';
+          btn.classList.add('playing');
+          btn.title = 'Stop music';
+        } else {
+          clearTimeout(loopTO);
+          mCtx.close(); mCtx = null;
+          btn.textContent = '🎵';
+          btn.classList.remove('playing');
+          btn.title = 'Play chiptune';
+        }
+      });
+    }
+
+    // ─────────────────────────────────────
+    // INIT
+    // ─────────────────────────────────────
+    document.addEventListener('DOMContentLoaded', () => {
+      initTypewriter();
+      initCoinRain();
+      initBlockHits();
+      initCursorTrail();
+      createNikitaRunner();
+      initMusicButton();
+    });
+
+  })();
+  </script>
 
 </body>
 </html>
