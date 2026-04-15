@@ -115,6 +115,13 @@
       vertical-align: -0.08em;
       display: inline-block;
       border-radius: 50%;
+      animation: spin3d 2.5s linear infinite;
+      box-shadow: 0 0 40px rgba(245,197,24,0.5), 0 0 80px rgba(245,197,24,0.2);
+      transform-style: preserve-3d;
+    }
+    @keyframes spin3d {
+      0%   { transform: rotateY(0deg); }
+      100% { transform: rotateY(360deg); }
     }
     .hero-sub {
       font-size: clamp(0.95rem, 2.2vw, 1.25rem);
