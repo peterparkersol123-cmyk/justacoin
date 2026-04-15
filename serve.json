@@ -1,4 +1,6 @@
 {
+  "public": ".",
+  "directoryListing": false,
   "headers": [
     {
       "source": "**/*",
@@ -7,7 +9,5 @@
         { "key": "X-Content-Type-Options", "value": "nosniff" }
       ]
     }
-  ],
-  "cleanUrls": false,
-  "trailingSlash": false
+  ]
 }
