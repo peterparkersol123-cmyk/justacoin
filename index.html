@@ -954,21 +954,40 @@
         loopTO = setTimeout(schedule, (total - 0.1) * 1000);
       }
 
-      btn.addEventListener('click', () => {
-        playing = !playing;
-        if (playing) {
-          mCtx = new (window.AudioContext || window.webkitAudioContext)();
-          schedule();
-          btn.textContent = '🔊';
-          btn.classList.add('playing');
-          btn.title = 'Stop music';
-        } else {
-          clearTimeout(loopTO);
-          mCtx.close(); mCtx = null;
-          btn.textContent = '🎵';
-          btn.classList.remove('playing');
-          btn.title = 'Play chiptune';
-        }
+      function startMusic() {
+        if (playing) return;
+        playing = true;
+        mCtx = new (window.AudioContext || window.webkitAudioContext)();
+        schedule();
+        btn.textContent = '🔊';
+        btn.classList.add('playing');
+        btn.title = 'Stop music';
+      }
+
+      function stopMusic() {
+        playing = false;
+        clearTimeout(loopTO);
+        mCtx.close(); mCtx = null;
+        btn.textContent = '🎵';
+        btn.classList.remove('playing');
+        btn.title = 'Play music';
+      }
+
+      // Autoplay on first user interaction (browser requires it)
+      const autoplay = () => {
+        startMusic();
+        document.removeEventListener('click',     autoplay);
+        document.removeEventListener('touchstart', autoplay);
+        document.removeEventListener('keydown',    autoplay);
+      };
+      document.addEventListener('click',     autoplay);
+      document.addEventListener('touchstart', autoplay);
+      document.addEventListener('keydown',    autoplay);
+
+      // Button toggles on/off after that
+      btn.addEventListener('click', e => {
+        e.stopPropagation(); // don't double-trigger autoplay
+        playing ? stopMusic() : startMusic();
       });
     }
 
